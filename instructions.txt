@@ -1,0 +1,53 @@
+# Install Conda and dependencies
+sh /opt/cuspatial/Miniconda3-latest-Linux-x86_64.sh
+conda install -c rapidsai -c nvidia -c conda-forge -c defaults libgdal=3.3.1 libcuspatial=22.06
+conda config --set auto_activate_base false
+conda activate
+
+# Compile Spark cuspatial
+#cd /home/kpripuzic/cuspatial/spark-rapids-examples/examples/UDF-Examples/Spark-cuSpatial
+#mvn package
+#cp target/spark-cuspatial-22.06.0-SNAPSHOT.jar /home/kpripuzic/cuspatial/cuspatial_data/jars
+#wget https://repo1.maven.org/maven2/com/nvidia/rapids-4-spark_2.12/22.06.0/rapids-4-spark_2.12-22.06.0.jar
+#mv rapids-4-spark_2.12-22.06.0.jar /home/kpripuzic/cuspatial/cuspatial_data/jars
+
+# JAVA
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 
+export PATH=$PATH:$JAVA_HOME/bin
+
+# SPARK
+export SPARK_HOME=/home/mcubek/cuspatial/spark-3.1.1-bin-hadoop3.2
+
+# Copy the spark configure file from template.
+#cd ${SPARK_HOME}/conf/
+#cp spark-defaults.conf.template spark-defaults.conf
+
+# Add the following configs to the file spark-defaults.conf.
+#spark.worker.resource.gpu.amount 1
+
+spark.worker.resource.gpu.discoveryScript /home/mcubek/cuspatial/spark-3.1.1-bin-hadoop3.2/examples/src/main/scripts/getGpusResources.sh
+
+nalazi se u datoteci ispod
+#vim spark-defaults.conf
+
+#Make sure you have prepared the necessary packages 
+export SPARK_CUSPATIAL_DIR=/home/mcubek/cuspatial/cuspatial_data/jars
+export RAPIDS_JAR=${SPARK_CUSPATIAL_DIR}/rapids-4-spark_2.12-22.06.0.jar
+export SAMPLE_JAR=${SPARK_CUSPATIAL_DIR}/spark-cuspatial-22.06.0-SNAPSHOT.jar
+
+#Copy required jars to $SPARK_HOME/jars folder.
+#cp $RAPIDS_JAR $SPARK_HOME/jars/
+
+#Start the Spark Master process.
+${SPARK_HOME}/sbin/start-master.sh
+
+#Start a Spark slave process.
+export SPARK_MASTER=spark://`hostname -f`:7077
+export SPARK_CORES_PER_WORKER=10
+${SPARK_HOME}/sbin/start-worker.sh ${SPARK_MASTER} -c ${SPARK_CORES_PER_WORKER} 
+
+cd /home/mcubek/cuspatial/spark-rapids-examples/examples/UDF-Examples/Spark-cuSpatial
+
+Editirati gup-run.sh sa ispravnim pathovima na env varijable
+
+LD_LIBRARY_PATH=/home/mcubek/miniconda3/lib:$LD_LIBRARY_PATH ./gpu-run.sh 
