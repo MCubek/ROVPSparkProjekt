@@ -16,7 +16,7 @@ To run kafka and connectors in docker locally:
     docker-compose -f docker-compose.yaml -f kafka-connect/submit-connectors.yaml up -d
     ```
 6. Open Confluent Platform interface or Kafka-UI
-    - http://localhost:8080
+    - http://localhost:8085
     - http://localhost:9021
 
 7. To stop services
