@@ -17,4 +17,6 @@ echo -e "connecting to host $CONNECT_HOST\n"
 
 DATA=$(envsubst < $1)
 
+dockerize -wait http://$CONNECT_HOST:8083 -timeout 120s
+
 curl -X POST -H "${HEADER}" --data "$DATA" http://$CONNECT_HOST:8083/connectors
