@@ -19,7 +19,7 @@ To run kafka and connectors in docker locally:
     - http://localhost:8085
     - http://localhost:9021
 
-7. To stop services
+7. To stop servicesdocker-compose -f docker-compose.yaml -f kafka-connect/submit-connectors.yaml down
     ```Bash
-    docker-compose -f docker-compose.yaml -f kafka-connect/submit-connectors.yaml down
+    
     ```

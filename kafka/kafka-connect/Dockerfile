@@ -1,4 +1,5 @@
 FROM confluentinc/cp-server-connect-base:latest
 
+ADD ./data /data
 # Install connectors
-# RUN confluent-hub install --no-prompt jcustenborder/kafka-connect-twitter:0.3.34
+RUN confluent-hub install --no-prompt confluentinc/kafka-connect-datagen:latest

@@ -1,0 +1,52 @@
+{
+  "namespace": "taxi",
+  "name": "taxi_location",
+  "type": "record",
+  "fields": [
+    {
+      "name": "vehicle_id",
+      "type": {
+        "type": "int",
+        "arg.properties": {
+          "range": {
+            "min": 0,
+            "max": 9999
+          }
+        }
+      }
+    },
+    {
+      "name": "location",
+      "type": {
+        "type": "record",
+        "name": "location",
+        "fields": [
+          {
+            "name": "latitude",
+            "type": {
+              "type": "double",
+              "arg.properties": {
+                "range": {
+                  "min": 40.477399,
+                  "max": 40.917577
+                }
+              }
+            }
+          },
+          {
+            "name": "longitude",
+            "type": {
+              "type": "double",
+              "arg.properties": {
+                "range": {
+                  "min": -74.25909,
+                  "max": -73.700272
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
