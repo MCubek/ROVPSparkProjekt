@@ -1,5 +1,6 @@
 # FOLDER ENV
 export CUSPATIAL_HOME=~/cuspatial
+export GIT_PROJECT=~/git/ROVPSparkProjekt
 
 # Install Conda and dependencies
 sh /opt/cuspatial/Miniconda3-latest-Linux-x86_64.sh
@@ -33,7 +34,7 @@ export SPARK_CORES_PER_WORKER=10
 export EXAMPLE_PATH=$CUSPATIAL_HOME/spark-rapids-examples/examples/UDF-Examples/Spark-cuSpatial
 export LD_LIBRARY_PATH=~/miniconda3/lib
 
-export PYTHON_FILE_PATH=$EXAMPLE_PATH/spatial_join.py
+export PYTHON_FILE_PATH=$GIT_PROJECT/spatial_join_large.py
 
 
 # Copy the spark configure file from template.
@@ -63,7 +64,7 @@ cd $CUSPATIAL_HOME
 
 
 Pokrenuti obradu
-source $EXAMPLE_PATH/gpu-run.sh 
+source $GIT_PROJECT/gpu-run.sh 
 
 Zaustaviti sve servise
 ${SPARK_HOME}/sbin/stop-all.sh
