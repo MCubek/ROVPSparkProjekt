@@ -24,7 +24,7 @@ export SPARK_HOME=$CUSPATIAL_HOME/spark-3.1.1-bin-hadoop3.2
 
 # Other enviroment variables 
 export ROOT_PATH=$CUSPATIAL_HOME/cuspatial_data
-export DATA_PATH=$ROOT_PATH/smalldata
+export DATA_PATH=$ROOT_PATH/largedata
 export SPARK_CUSPATIAL_DIR=$ROOT_PATH/jars
 
 export SPARK_MASTER=spark://`hostname -f`:7077
