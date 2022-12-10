@@ -29,7 +29,7 @@ PYTHON_FILE_PATH=${PYTHON_FILE_PATH:-./spatial_join.py}
 rm -rf $DATA_OUT_PATH
 
 # the path to keep the jars of spark-rapids & spark-cuspatial
-JARS=${ROOT_PATH/jars:-$SPARK_CUSPATIAL_DIR}
+JARS=${SPARK_CUSPATIAL_DIR:-$ROOT_PATH/jars}
 
 JARS_PATH=${JARS_PATH:-$JARS/rapids-4-spark_2.12-22.06.0.jar,$JARS/spark-cuspatial-22.06.0-SNAPSHOT.jar}
 
