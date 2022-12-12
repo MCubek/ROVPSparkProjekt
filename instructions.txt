@@ -41,7 +41,7 @@ export PYTHON_FILE_PATH=$GIT_PROJECT/spatial_join_large.py
 
 # Add the following configs to the file spark-defaults.conf.
 #spark.worker.resource.gpu.amount 1
-spark.worker.resource.gpu.discoveryScript home/your_user_name/spark-3.1.1-bin-hadoop3.2/examples/src/main/scripts/getGpusResources.sh
+spark.worker.resource.gpu.discoveryScript /home/your_user_name/spark-3.1.1-bin-hadoop3.2/examples/src/main/scripts/getGpusResources.sh
 
 nalazi se u datoteci ispod
 #vim $SPARK_HOME/conf/spark-defaults.conf
